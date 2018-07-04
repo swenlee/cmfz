@@ -4,21 +4,21 @@ import com.baizhi.cmfz.entity.Manager;
 import org.apache.ibatis.annotations.Param;
 
 /**
- * Created by Lee on 2018/7/4.
+ * 管理员
+ * @Author wendy
+ * Created by Administrator on 2018/7/4.
  */
 public interface ManagerDao {
     /**
-     * 通过姓名和密码查询用户
-     * @param mgrName
-     * @param mgrPwd
-     * @return
+     * 向数据库中插入管理员用户
+     * @Author wendy
+     * @param mgr 向数据库中插入的管理员信息
      */
-    public Manager selectByNameAndPwd(@Param("mgrName") String mgrName,@Param("mgrPwd")String mgrPwd);
-
+    public Integer insertManager(@Param("mgr") Manager mgr);
     /**
-     * 插入一个管理员
-     * @param manager
-     * @return
+     * 根据id查找管理员用户
+     * @Author wendy
+     * @param id  查询的条件
      */
-    public Integer insertMgr(Manager  manager);
+    public Manager selectManagerById(String id);
 }

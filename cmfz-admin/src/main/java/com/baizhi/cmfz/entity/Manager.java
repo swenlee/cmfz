@@ -1,74 +1,65 @@
 package com.baizhi.cmfz.entity;
 
-/**
- * Created by Lee on 2018/7/4.
- */
-public class Manager {
-    private String mgrId;
-    private String mgrName;
-    private String mgrPwd;
-    private String salt;
-    private String status;
+import java.io.Serializable;
 
-    public Manager(String mgrId, String mgrName, String mgrPwd, String salt, String status) {
-        this.mgrId = mgrId;
-        this.mgrName = mgrName;
-        this.mgrPwd = mgrPwd;
-        this.salt = salt;
-        this.status = status;
-    }
+public class Manager implements Serializable {
+  private String mgrId;
+  private String mgrName;
+  private String mgrPwd;
+  private String mgrSalt;
+  private Long mgrStatus;
 
-    public Manager() {
-    }
+  public Manager() {
+  }
 
-    public String getMgrId() {
-        return mgrId;
-    }
+  @Override
+  public String toString() {
+    return "Manager{" +
+            "mgrId='" + mgrId + '\'' +
+            ", mgrName='" + mgrName + '\'' +
+            ", mgrPwd='" + mgrPwd + '\'' +
+            ", mgrSalt='" + mgrSalt + '\'' +
+            ", mgrStatus=" + mgrStatus +
+            '}';
+  }
 
-    public void setMgrId(String mgrId) {
-        this.mgrId = mgrId;
-    }
+  public String getMgrId() {
+    return mgrId;
+  }
 
-    public String getMgrName() {
-        return mgrName;
-    }
+  public void setMgrId(String mgrId) {
+    this.mgrId = mgrId;
+  }
 
-    public void setMgrName(String mgrName) {
-        this.mgrName = mgrName;
-    }
+  public String getMgrName() {
+    return mgrName;
+  }
 
-    public String getMgrPwd() {
-        return mgrPwd;
-    }
+  public void setMgrName(String mgrName) {
+    this.mgrName = mgrName;
+  }
 
-    public void setMgrPwd(String mgrPwd) {
-        this.mgrPwd = mgrPwd;
-    }
+  public String getMgrPwd() {
+    return mgrPwd;
+  }
 
-    public String getSalt() {
-        return salt;
-    }
+  public void setMgrPwd(String mgrPwd) {
+    this.mgrPwd = mgrPwd;
+  }
 
-    public void setSalt(String salt) {
-        this.salt = salt;
-    }
+  public String getMgrSalt() {
+    return mgrSalt;
+  }
 
-    public String getStatus() {
-        return status;
-    }
+  public void setMgrSalt(String mgrSalt) {
+    this.mgrSalt = mgrSalt;
+  }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
+  public Long getMgrStatus() {
+    return mgrStatus;
+  }
 
-    @Override
-    public String toString() {
-        return "Manager{" +
-                "mgrId='" + mgrId + '\'' +
-                ", mgrName='" + mgrName + '\'' +
-                ", mgrPwd='" + mgrPwd + '\'' +
-                ", salt='" + salt + '\'' +
-                ", status='" + status + '\'' +
-                '}';
-    }
+  public void setMgrStatus(Long mgrStatus) {
+    this.mgrStatus = mgrStatus;
+  }
 }

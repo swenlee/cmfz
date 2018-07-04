@@ -3,22 +3,19 @@ package com.baizhi.cmfz.service;
 import com.baizhi.cmfz.entity.Manager;
 
 /**
- * Created by Lee on 2018/7/4.
+ * Created by Administrator on 2018/7/4.
  */
 public interface ManagerService {
     /**
-     * 业务层通过密码姓名进行查询
-     * @param mgrName
-     * @param mgrPwd
-     * @return
+     * 向数据库中插入管理员用户
+     * @Author 程少华
+     * @param mgr 向数据库中插入的管理员信息
      */
-    public Manager queryByNameAndPwd(String mgrName,String mgrPwd);
-
+    public Integer addManager(Manager mgr);
     /**
-     * 在业务层添加一个管理员
-     * @param manager
-     * @return
+     * 根据id查找管理员用户
+     * @Author 程少华
+     * @param id  查询的条件
      */
-    public Integer addMgr(Manager manager);
-
+    public Manager queryManagerById(String id,String password);
 }

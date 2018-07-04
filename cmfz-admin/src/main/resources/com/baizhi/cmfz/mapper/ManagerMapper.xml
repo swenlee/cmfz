@@ -4,4 +4,7 @@
      <select id="selectByNameAndPwd" resultType="Manager">
          select * from t_manager where mgr_name =#{mgrName} and mgr_pwd =#{mgrPwd}
      </select>
+    <insert id="insertMgr" >
+        insert into t_manager(mgr_id,mgr_name,mgr_pwd,salt,status) values(#{magId,mgrName,mgrPwd,salt,status})
+    </insert>
 </mapper>
