@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -33,35 +34,36 @@ public class ManagerController {
     @RequestMapping(value = "toLogin")
     public String toLogin(HttpServletRequest request, Model model){
         Cookie[] cookies = request.getCookies();
-        String mgrId="";
+        String mgrName="";
         for (Cookie cookie:cookies){
             if(cookie.getName().equals("mgrName")){
                 try {
-                    mgrId = URLDecoder.decode(cookie.getValue(),"utf-8");
+                    mgrName = URLDecoder.decode(cookie.getValue(),"utf-8");
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
             }
         }
-        model.addAttribute("mgrId",mgrId);
+        model.addAttribute("mgrName",mgrName);
         return "login";
     }
 
-    @RequestMapping(value = "/login",method= RequestMethod.POST)
+  /*  @RequestMapping(value = "/login",method= RequestMethod.POST)
     public String login(Manager manager, String code, HttpSession session, Model model, String remember, HttpServletResponse response){
+        System.out.println(manager);
         String vcode = (String) session.getAttribute("vcode");
         if(!vcode.equalsIgnoreCase(code)){
             return "login";
         }
-        System.out.println("管理员："+manager);
-        Manager mgr = ms.queryManagerById(manager.getMgrId(), manager.getMgrPwd());
+        Manager mgr = ms.queryManagerByName(manager.getMgrName(), manager.getMgrPwd());
+        System.out.println("管理员controller："+mgr);
         if(mgr == null){
             return "login";
         }
         model.addAttribute("manager",mgr);
         session.setAttribute("manager",mgr);
         if(remember.equals("true")){
-            String name = mgr.getMgrId();
+            String name = mgr.getMgrName();
             try {
                 name = java.net.URLEncoder.encode(name,"utf-8");
             } catch (UnsupportedEncodingException e) {
@@ -71,17 +73,56 @@ public class ManagerController {
             response.addCookie(c1);
         }
         return "index";
-    }
+    }*/
+  @RequestMapping(value = "/login",method= RequestMethod.POST)
+  public @ResponseBody Manager login(String mgrName,String mgrPwd,  HttpSession session, String code,Model model, String remember, HttpServletResponse response){
+      Manager mgr = null;
+      Manager manager = new Manager();
+      manager.setMgrName(mgrName);
+      manager.setMgrPwd(mgrPwd);
+      String vcode = (String) session.getAttribute("vcode");
+     /* if(!vcode.equalsIgnoreCase(code)){
+          System.out.println("code验证失败！");
+          return mgr;
+      }else{
+          mgr = new Manager();
+      }*/
+      mgr = ms.queryManagerByName(manager.getMgrName(), manager.getMgrPwd());
+      System.out.println("管理员controller："+mgr);
+      if(mgr == null){
+          return mgr;
+      }
+      model.addAttribute("manager",mgr);
+      session.setAttribute("manager",mgr);
+      if(remember.equals("true")){
+          System.out.println("-----"+mgr.getMgrName());
+          String name = mgr.getMgrName();
+          try {
+              name = java.net.URLEncoder.encode(name,"utf-8");
+          } catch (UnsupportedEncodingException e) {
+              e.printStackTrace();
+          }
+          Cookie c1 = new Cookie("mgrName",name);
+          response.addCookie(c1);
+      }
+      return mgr;
+  }
 
 
     @RequestMapping(value="/createVcode")
     public String createVcode(HttpServletResponse response, Model model,HttpSession session) throws IOException {
-        CreateValidateCode cvc = new CreateValidateCode(150, 70, 4);
+        CreateValidateCode cvc = new CreateValidateCode(50, 25, 4);
         String vcode = cvc.getCode();
         model.addAttribute("vcode", vcode);
         session.setAttribute("vcode", vcode);
         System.out.println(vcode);
         cvc.write(response.getOutputStream());
         return null;
+    }
+
+    @RequestMapping(value = "/logout")
+    public String logout(HttpSession session){
+      session.setAttribute("manager",null);
+       return "login";
     }
 }

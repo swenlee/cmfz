@@ -18,7 +18,7 @@ public interface ManagerDao {
     /**
      * 根据id查找管理员用户
      * @Author wendy
-     * @param id  查询的条件
+     * @param mgrName  查询的条件
      */
-    public Manager selectManagerById(String id);
+    public Manager selectManagerByName(@Param("mgrName") String mgrName);
 }

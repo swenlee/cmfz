@@ -12,9 +12,9 @@ import javax.imageio.ImageIO;
 
 public class CreateValidateCode {
 	// ͼƬ�Ŀ�ȡ�
-	private int width = 160;
+	private int width = 80;
 	// ͼƬ�ĸ߶ȡ�
-	private int height = 40;
+	private int height = 28;
 	// ��֤���ַ�����
 	private int codeCount = 4;
 	// ��֤���������
@@ -180,8 +180,8 @@ public class CreateValidateCode {
 		for (int i = 0; i < w1; i++) {
 			double d = (double) (period >> 1)
 					* Math.sin((double) i / (double) period
-							+ (6.2831853071795862D * (double) phase)
-							/ (double) frames);
+					+ (6.2831853071795862D * (double) phase)
+					/ (double) frames);
 			g.copyArea(i, 0, 1, h1, 0, (int) d);
 			if (borderGap) {
 				g.setColor(color);
@@ -203,10 +203,5 @@ public class CreateValidateCode {
 	public String getCode() {
 		return code.toLowerCase();
 	}
-
-	// ʹ�÷�������Servlet�����������룩
-	// CreateValidateCode vCode = new CreateValidateCode(100, 30, 5, 10);
-	// session.setAttribute("code", vCode.getCode()); //������Session������
-	// vCode.write(response.getOutputStream());
 	
 }

@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="cmfz-admin:war exploded">
-    <output-path>$PROJECT_DIR$/cmfz-admin/target/cmfz-admin</output-path>
+    <output-path>$PROJECT_DIR$/../cmfz/cmfz-admin/target/cmfz-admin</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
@@ -35,10 +35,25 @@
           <element id="library" level="project" name="Maven: log4j:log4j:1.2.9" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.6.6" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-log4j12:1.6.6" />
+          <element id="library" level="project" name="Maven: org.jeecg:easypoi-base:2.3.1" />
+          <element id="library" level="project" name="Maven: org.apache.poi:poi:3.10-FINAL" />
+          <element id="library" level="project" name="Maven: org.apache.poi:poi-ooxml:3.10-FINAL" />
+          <element id="library" level="project" name="Maven: dom4j:dom4j:1.6.1" />
+          <element id="library" level="project" name="Maven: xml-apis:xml-apis:1.0.b2" />
+          <element id="library" level="project" name="Maven: org.apache.poi:poi-ooxml-schemas:3.10-FINAL" />
+          <element id="library" level="project" name="Maven: org.apache.xmlbeans:xmlbeans:2.3.0" />
+          <element id="library" level="project" name="Maven: stax:stax-api:1.0.1" />
+          <element id="library" level="project" name="Maven: com.google.guava:guava:16.0.1" />
+          <element id="library" level="project" name="Maven: javax.validation:validation-api:1.1.0.Final" />
+          <element id="library" level="project" name="Maven: org.jeecg:easypoi-web:2.3.1" />
+          <element id="library" level="project" name="Maven: org.jeecg:easypoi-annotation:2.3.1" />
+          <element id="library" level="project" name="Maven: org.apache.bval:bval-jsr303:0.5" />
+          <element id="library" level="project" name="Maven: org.apache.bval:bval-core:0.5" />
+          <element id="library" level="project" name="Maven: commons-beanutils:commons-beanutils-core:1.8.3" />
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/cmfz-admin/target/cmfz-admin/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/../cmfz/cmfz-admin/target/cmfz-admin/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="cmfz-admin/web/Web" />
     </root>

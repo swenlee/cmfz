@@ -12,6 +12,14 @@ public class Manager implements Serializable {
   public Manager() {
   }
 
+  public Manager(String mgrId, String mgrName, String mgrPwd, String mgrSalt, Long mgrStatus) {
+    this.mgrId = mgrId;
+    this.mgrName = mgrName;
+    this.mgrPwd = mgrPwd;
+    this.mgrSalt = mgrSalt;
+    this.mgrStatus = mgrStatus;
+  }
+
   @Override
   public String toString() {
     return "Manager{" +

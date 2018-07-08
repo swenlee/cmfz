@@ -16,7 +16,7 @@
 	<script type="text/javascript">
         var codeStatus=false;
 		function checkCode(){
-            var code = $("#enCode").val();
+           var code = $("#enCode").val();
             $.post("${pageContext.request.contextPath}/mgr/checkCode.do", {code:code},
                 function(data){
                     $("#vcodeInfo").html(data);
@@ -29,23 +29,39 @@
                 });
         }
 		$(function(){
-			/*$("#captchaImage").click(function(){//点击更换验证码
-			 $("#captchaImage").attr("src","/code/getCode.do?"+timer());
-			 });*/
-			//  form 表单提交
-			$("#loginForm").bind("submit",function(){
-				/*checkCode();
-				return codeStatus;*/
+			//ajaxs实现表单验证
+			$("#btnSignCheck").click("submit",function(){
+                $.ajax({
+                    url : "http://localhost:8088/admin/mgr/login.do",
+                    type : "POST",
+                    data : {
+                        mgrName : $("#txtUsername").val(),
+                        mgrPwd : $("#txtPassowrd").val(),
+						remember:$("#isRememberUsername").val(),
+						code : $("#enCode").val(),
+					},
+                    success: function(data){
+                        if(data==""){
+                            $("#divErrorMssage").text("输入用户名或者密码错误，请重新输入");
+                        }else{
+                            window.location.href = "${pageContext.request.contextPath}/main.jsp";
+                        };
+                    },
+                    error:function(){
+                        alert("失败");
+                    }
+                });
 			});
-
 		});
 	</script>
 </head>
 <body>
-	
 		<div class="login">
-			<form id="loginForm" action="${pageContext.request.contextPath}/mgr/login.do" method="post" >
-				
+			<div style="height: 30px; padding: 5px; color: red"
+				 id="divErrorMssage">
+				<br />
+			</div>
+			<form id="loginForm" method="post">
 				<table>
 					<tbody>
 						<tr>
@@ -61,7 +77,7 @@
 								用户名:
 							</th>
 							<td>
-								<input type="text"  name="mgrId" class="text" value="${mgrId}" maxlength="40"/>
+								<input type="text"  name="mgrName" id="txtUsername" class="text" value="${mgrName}" maxlength="40"/>
 							</td>
 					  </tr>
 					  <tr>
@@ -69,7 +85,7 @@
 								密&nbsp;&nbsp;&nbsp;码:
 							</th>
 							<td>
-								<input type="password" name="mgrPwd" class="text"  maxlength="20" autocomplete="off"/>
+								<input type="password" name="mgrPwd" id="txtPassowrd" class="text"  maxlength="20" autocomplete="off"/>
 							</td>
 					  </tr>
 					
@@ -83,7 +99,6 @@
 							</td>
 
 						</tr>
-
 					<tr>
 						<td>
 							&nbsp;
@@ -101,7 +116,7 @@
 						<td>&nbsp;</td>
 						<th>&nbsp;</th>
 						<td>
-							<input type="button" class="homeButton" value="" onclick="location.href='/'"><input type="submit" class="loginButton" value="登录">
+							<input type="button" id= "btnSignCheck" class="loginButton" value="登录"/>
 						</td>
 					</tr>
 				</tbody></table>

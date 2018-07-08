@@ -1,42 +1,58 @@
-package ManagerTest;/**
+/*
+package ManagerTest;*/
+/**
  * Created by Administrator on 2018/7/4.
- */
+ *//*
 
-import com.csh.cmfz.dao.ManagerDao;
-import com.csh.cmfz.entity.Manager;
-import com.csh.cmfz.service.ManagerService;
-import com.csh.cmfz.util.Codec;
+
+import com.baizhi.cmfz.dao.ManagerDao;
+import com.baizhi.cmfz.entity.Manager;
+import com.baizhi.cmfz.service.ManagerService;
+import com.baizhi.cmfz.util.Codec;
 import org.aspectj.apache.bcel.classfile.Code;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.UUID;
 
+*/
 /**
  * @Description TODO
- * @Author 程少华
+ * @Author wendy
  * @Date 2018/7/4 14:31
- **/
+ **//*
+
 public class mgrTest {
+
     @Test
-    public void test1(){
-        ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("classpath*:/applicationContext.xml");
-        ManagerDao managerDao = (ManagerDao) classPathXmlApplicationContext.getBean("managerDao");
-        /*System.out.println("只能我跟撒打算"+managerDao);
-        Manager manager = new Manager();
-        manager.setMgrId(UUID.randomUUID().toString().replace("-",""));
-        manager.setMgrSalt("abcd");
-        String pwd = Codec.encryption("123456"+"abcd");
-        manager.setMgrPwd(pwd);
-        System.out.println(manager);
-        Integer integer = managerDao.insertManager(manager);
-        System.out.println(integer);*/
-       ManagerService ms = (ManagerService) classPathXmlApplicationContext.getBean("managerServiceImpl");
-       System.out.println("服务对象："+ms);
-       Manager manager = ms.queryManagerById("99666cde0e394cfa82c7ec1631e36ccb", "123456");
-        System.out.println(manager);
-       /* Manager manager1 = managerDao.selectManagerById("99666cde0e394cfa82c7ec1631e36ccb");
-        System.out.println(manager1);*/
+    public void testmd5(){
+        String code = Codec.encryption("123456"+"abcd");
+        System.out.println(code);
+    }
+
+    @Test
+    public void encode(){
+*/
+/*        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
+        ManagerDao managerDao = (ManagerDao) context.getBean("managerDao");
+        Integer integer = managerDao.insertManager(new Manager("6", "张三", "123456", "abcd", 1l));
+        System.out.println(integer);*//*
+
+    }
+
+    @Test
+    public void service(){
+        */
+/*ApplicationContext context = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
+        ManagerService managerService = (ManagerService) context.getBean("managerServiceImpl");
+       *//*
+*/
+/* Integer integer = managerService.addManager(new Manager("6", "曹九龙", "123456", "aaaa", 1l));
+        System.out.println(integer);*//*
+
     }
 
 }
+*/
