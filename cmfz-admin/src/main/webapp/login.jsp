@@ -57,7 +57,7 @@
 </head>
 <body>
 		<div class="login">
-			<div style="height: 30px; padding: 5px; color: red"
+			<div style="height: 10px; padding: 5px; color: red"
 				 id="divErrorMssage">
 				<br />
 			</div>

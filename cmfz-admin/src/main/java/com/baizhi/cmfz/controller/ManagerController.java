@@ -111,7 +111,7 @@ public class ManagerController {
 
     @RequestMapping(value="/createVcode")
     public String createVcode(HttpServletResponse response, Model model,HttpSession session) throws IOException {
-        CreateValidateCode cvc = new CreateValidateCode(50, 25, 4);
+        CreateValidateCode cvc = new CreateValidateCode(80, 40, 4);
         String vcode = cvc.getCode();
         model.addAttribute("vcode", vcode);
         session.setAttribute("vcode", vcode);

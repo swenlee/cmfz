@@ -1,7 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8" isELIgnored="false" %>
 <script type="text/javascript">
     $(function() {
-        $('#t1').datagrid({
+        $('#guru_t1').datagrid({
             width:1100,
             height:400,
             remoteSort:false,
@@ -11,7 +11,7 @@
             pagination : true,
             pageList : [ 5,10,15,20 ],
             pageSize : 5,
-            toolbar : "#tb",
+            toolbar : "#guru_tb",
             fitColumns : true,
             singleSelect : true,
             url:"${pageContext.request.contextPath}/guru/getallgurus.do",
@@ -28,7 +28,7 @@
                     '</tr></table>';
             },
         });
-        $("#add").linkbutton({
+        $("#guru_add").linkbutton({
             iconCls : "icon-add",
             text : "新增上师信息",
             onClick : function(){
@@ -58,7 +58,7 @@
                                             timeout:5000,
                                             showType:"slider",
                                         });
-                                        $('#t1').datagrid("load",{
+                                        $('#guru_t1').datagrid("load",{
                                             href : "${pageContext.request.contextPath}/guru/getallgurus.do",
                                         });
                                         $("#dialog").dialog("close");
@@ -88,7 +88,7 @@
                 });
             }
         });
-        $("#update").linkbutton({
+        $("#guru_update").linkbutton({
             iconCls : "icon-edit",
             text : "修改上师信息",
             onClick : function(){
@@ -101,7 +101,7 @@
                     resizable : true,
                     //在对话框加载远程数据的时候触发，给表单赋值
                     onLoad : function(){
-                        var select = $("#t1").datagrid("getSelected");
+                        var select = $("#guru_t1").datagrid("getSelected");
                         $.ajax({
                             url : "${pageContext.request.contextPath}/guru/queryguru.do",
                             data : {"guruId" : select.guruId},
@@ -130,7 +130,7 @@
                                     console.log(result);
                                     //刷新页面
                                     if(result == "successful"){
-                                        $("#t1").datagrid("load",{
+                                        $("#guru_t1").datagrid("load",{
                                             href : "${pageContext.request.contextPath}/guru/getallgurus.do",
                                         });
                                         $("#dialog").dialog("close");
@@ -163,13 +163,13 @@
                 });
             }
         });
-        $('#ss').searchbox({
-            menu:'#mm',
+        $('#guru_ss').searchbox({
+            menu:'#guru_mm',
             prompt:'请输入查找条件',
             searcher:function(value,name){
                 console.log(value);
                 var url = "${pageContext.request.contextPath}/guru/querytrim.do?trim="+name+"&value="+value;
-                $('#t1').datagrid({
+                $('#guru_t1').datagrid({
                     width:1100,
                     height:500,
                     remoteSort:false,
@@ -179,7 +179,7 @@
                     pagination : true,
                     pageList : [ 5,10,15,20 ],
                     pageSize : 5,
-                    toolbar : "#tb",
+                    toolbar : "#guru_tb",
                     fitColumns : true,
                     singleSelect : true,
                     url:encodeURI(url),
@@ -200,7 +200,7 @@
         });
         $("#addmore").linkbutton({
             iconCls : "icon-add",
-            text : "导入上师信息Excel表格",
+            text : "导入Excel表格",
             onClick : function(){
                 $("#dialog").dialog({
                     width:500,
@@ -228,7 +228,7 @@
                                             timeout:5000,
                                             showType:"slider",
                                         });
-                                        $('#t1').datagrid("load",{
+                                        $('#guru_t1').datagrid("load",{
                                             href : "${pageContext.request.contextPath}/guru/getallgurus.do",
                                         });
                                         $("#dialog").dialog("close");
@@ -265,11 +265,11 @@
     }
 </script>
 
-<table id="t1"></table>
-<div id="tb">
-    <input id="ss" style="width:300px"></input>
-    <a id="update"></a>
-    <a id="add" ></a>
+<table id="guru_t1"></table>
+<div id="guru_tb">
+    <input id="guru_ss" style="width:300px"></input>
+    <a id="guru_update"></a>
+    <a id="guru_add" ></a>
     <a id="delete"></a>
     <%--<form action="${pageContext.request.contextPath }/guru/importExcel.do" method="post" enctype="multipart/form-data">
         <input type="file" name="file" />
@@ -278,8 +278,8 @@
     <%--<a class="easyui-linkbutton" data-options="iconCls:'icon-disk_download',plain:true,text:'批量插入'" onclick="batchAdd()"></a>--%>
    <%-- <a id="addMany" class="easyui-linkbutton" data-options="iconCls:'icon-cancel',plain:true,text:'批量插入'"></a>--%>
     <a id="addmore"></a>
-    <a class="easyui-linkbutton" data-options="iconCls:'icon-disk_upload',plain:true,text:'导出Excel'" onclick="exportExcel()"></a>
-    <div id="mm" style="width:120px">
+    <a class="easyui-linkbutton" data-options="iconCls:'icon-disk_upload',text:'导出Excel'" onclick="exportExcel()"></a>
+    <div id="guru_mm" style="width:120px">
         <div data-options="name:'guruId',iconCls:'icon-sum'">标识编号</div>
         <div data-options="name:'guruName',iconCls:'icon-sum'">上师法名</div>
         <div data-options="name:'guruPic',iconCls:'icon-sum'">头像文件名</div>

@@ -13,15 +13,15 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/datagrid-detailview.js"></script>
 <script type="text/javascript">
 function addTab(menuName,menuUrl,menuIcon){
-    var b = $("#tt").tabs("exists",menuName);
+    var b = $("#tab").tabs("exists",menuName);
     if(b){
-        $("#tt").tabs("select",menuName);
+        $("#tab").tabs("select",menuName);
     }else{
-        $("#tt").tabs("add",{
+        $("#tab").tabs("add",{
             title:menuName,
             iconCls:menuIcon,
             closable:true,
-            href : "${pageContext.request.contextPath}/"+menuUrl+".jsp",
+            href :"${pageContext.request.contextPath}/"+menuUrl+".jsp",
         });
     }
 }
@@ -63,7 +63,7 @@ $(function(){
 		</div>
     </div>
     <div data-options="region:'center'">
-    	<div id="tt" class="easyui-tabs" data-options="fit:true,narrow:true,pill:true">   
+    	<div id="tab" class="easyui-tabs" data-options="fit:true,narrow:true,pill:true">
 		    <div title="主页" data-options="iconCls:'icon-neighbourhood',"  style="background-image:url(img/shouye.jpg);background-repeat: no-repeat;background-size:100% 100%;"></div>
 		</div>  
     </div>   
