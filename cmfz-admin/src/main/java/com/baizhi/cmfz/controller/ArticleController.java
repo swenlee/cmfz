@@ -36,6 +36,7 @@ public class ArticleController {
         try {
             String realPath = request.getRealPath("");
             String uploadPath = realPath.substring(0, realPath.lastIndexOf("\\")) + "\\upload";
+            System.out.println(uploadPath);
             if (files != null && files.length != 0) {
                 for (MultipartFile file : files) {
                     String fileName = UUID.randomUUID().toString().replace("-", "") + "." + FilenameUtils.getExtension(file.getOriginalFilename());
@@ -43,6 +44,7 @@ public class ArticleController {
                     file.transferTo(new File(uploadPath + "\\" + fileName));
                     // 将上传的图片在服务器的url响应给客户端  图片回显
                     data.add(request.getContextPath() + "/upload/" + fileName);
+                    System.out.println(request.getContextPath() + "/upload/" + fileName);
                 }
             }
             result.setErrno(0);
@@ -55,9 +57,9 @@ public class ArticleController {
     }
 
     @RequestMapping("/createArticle")
-    public @ResponseBody
-    String createArticle(Article article) {
+    public @ResponseBody String createArticle(Article article) {
         System.out.println("============="+article);
+        article.setGuruName(guruService.queryGuruById(article.getGuruId()).getGuruName());
         String id = UUID.randomUUID().toString().replace("-", "");
         Date date = new Date();
         article.setArticleId(id);

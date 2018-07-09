@@ -5,7 +5,7 @@ import java.util.Date;
 
 /**
  * 专辑表
- * @author 程少华
+ * @author wendy
  */
 public class Album implements Serializable {
   private String albumId;

@@ -13,8 +13,8 @@ import java.util.List;
  */
 public interface MenuDao {
     /**
-     * 查找所有菜单项
-     * @Author wendy
+     * 查看所有菜单的选项
+     * @return
      */
     public List<Menu> selectAllMenus();
 }

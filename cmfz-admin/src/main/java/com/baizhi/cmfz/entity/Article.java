@@ -5,11 +5,15 @@ import com.alibaba.fastjson.annotation.JSONField;
 
 import java.io.Serializable;
 import java.util.Date;
-
+/**
+ * 文章表
+ * @author wendy
+ */
 public class Article implements Serializable{
 
   private String articleId;
   private String guruId;
+  private String guruName;
   private String introduction;
   @JSONField(format="yyyy-MM-dd hh:mm:ss")
   private Date date;
@@ -73,12 +77,21 @@ public class Article implements Serializable{
     this.articleStatus = articleStatus;
   }
 
+  public String getGuruName() {
+    return guruName;
+  }
+
+  public void setGuruName(String guruName) {
+    this.guruName = guruName;
+  }
+
   public Article() {
   }
 
-  public Article(String articleId, String guruId, String introduction, Date date, String mainPic, String articleTitle, String articleStatus) {
+  public Article(String articleId, String guruId, String guruName, String introduction, Date date, String mainPic, String articleTitle, String articleStatus) {
     this.articleId = articleId;
     this.guruId = guruId;
+    this.guruName = guruName;
     this.introduction = introduction;
     this.date = date;
     this.mainPic = mainPic;
@@ -86,11 +99,13 @@ public class Article implements Serializable{
     this.articleStatus = articleStatus;
   }
 
+
   @Override
   public String toString() {
     return "Article{" +
             "articleId='" + articleId + '\'' +
             ", guruId='" + guruId + '\'' +
+            ", guruName='" + guruName + '\'' +
             ", introduction='" + introduction + '\'' +
             ", date=" + date +
             ", mainPic='" + mainPic + '\'' +

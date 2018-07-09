@@ -28,6 +28,7 @@
                             return $("#addArticle").form("validate");
                         },
                         success:function(data){
+                            alert(data);
                             var temp=JSON.parse(data);
 
                             if(temp=="添加成功"){
@@ -37,6 +38,7 @@
                                     timeout:5000,
                                     showType:'slide'
                                 });
+                               /* windows.location.href="${pageContext.request.contextPath}/articleList.jsp";*/
                             }else{
                                 $.messager.alert("信息",temp);
                             }

@@ -1,7 +1,10 @@
 package com.baizhi.cmfz.entity;
 
 import java.io.Serializable;
-
+/**
+ * 管理员
+ * @author wendy
+ */
 public class Manager implements Serializable {
   private String mgrId;
   private String mgrName;

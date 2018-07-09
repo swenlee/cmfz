@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "../mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.cmfz.dao.LogDao">
+	<resultMap id="logMap" type="Log">
+		<id property="logId" column="log_id"/>
+		<result property="user" column="user"/>
+		<result property="logDate" column="log_date"/>
+		<result property="resource" column="resource"/>
+		<result property="action" column="action"/>
+		<result property="message" column="message"/>
+		<result property="result" column="result"/>
+	</resultMap>
+
+	<select id="selectAllLog" resultMap="logMap">
+		select * from t_log limit #{start},#{end}
+	</select>
+	<select id="selectCountLog" resultType="java.lang.Integer">
+		select count(*) from t_log
+	</select>
+
+	<insert id="insertLog">
+		insert into t_log(log_id,user,log_date,resource,action,message,result)
+		values(#{logId},#{user},#{logDate},#{resource},#{action},#{message},#{result})
+	</insert>
+</mapper>

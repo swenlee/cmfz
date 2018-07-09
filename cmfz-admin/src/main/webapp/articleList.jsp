@@ -21,8 +21,8 @@
                 {field:'articleTitle',title:'文章标题',sortable:true},
                 {field:'articleStatus',title:'状态',sortable:true},
                 {field:'date',title:'创建时间',sortable:true},
-                /*{field:'date',title:'创建时间',sortable:true},
-                {field:'date',title:'创建时间',sortable:true},*/
+                {field:'guruName',title:'文章作者',sortable:true},
+                /*{ field: 'field', title: '按钮', width: 100, align: 'center', formatter: aaa }*/
             ]],
         });
     })

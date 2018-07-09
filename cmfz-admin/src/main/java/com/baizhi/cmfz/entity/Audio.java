@@ -1,9 +1,9 @@
 package com.baizhi.cmfz.entity;
 
 import java.io.Serializable;
-
 /**
  * 音频表
+ * @author wendy
  */
 public class Audio implements Serializable {
   private String audioId;

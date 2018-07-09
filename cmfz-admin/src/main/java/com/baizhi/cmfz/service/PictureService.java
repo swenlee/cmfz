@@ -22,9 +22,24 @@ public interface PictureService {
      */
     public Integer addPicture(Picture picture);
 
+    /**
+     * 通过id进行查询图片信息
+     * @param id
+     * @return
+     */
     public Picture queryPictureById(String id);
 
+    /**
+     * 通过id进行图片的移除
+     * @param id
+     * @return
+     */
     public Integer removePictureById(String id);
 
+    /**
+     * 修改图片的信息
+     * @param picture
+     * @return
+     */
     public Integer modifyPicture(Picture picture);
 }
