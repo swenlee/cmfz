@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "../mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.cmfz.dao.ArticleDao">
+
+	<resultMap id="articleMap" type="Article">
+		<id property="articleId" column="article_id"/>
+		<result property="articleTitle" column="article_title"/>
+		<result property="articleStatus" column="article_status"/>
+		<result property="introduction" column="introduction"/>
+		<result property="mainPic" column="main_pic"/>
+		<result property="date" column="date"/>
+		<result property="guruId" column="guru_id"/>
+	</resultMap>
+
+	<insert id="insertArticle" >
+		insert into t_article(article_id,article_title,article_status,introduction,main_pic,date,guru_id)
+		values(#{articleId},#{articleTitle},#{articleStatus},#{introduction},#{mainPic},#{date},#{guruId})
+	</insert>
+	<select id="selectCount" resultType="java.lang.Integer">
+		select count(*) from t_article
+	</select>
+
+	<select id="selectArticlesOnPage" resultMap="articleMap">
+		SELECT * FROM t_article LIMIT #{begin},#{end}
+	</select>
+
+</mapper>

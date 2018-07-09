@@ -1,33 +1,21 @@
 package com.baizhi.cmfz.entity;
 
+
+import com.alibaba.fastjson.annotation.JSONField;
+
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * 文章表
- */
-public class Article implements Serializable {
+public class Article implements Serializable{
+
   private String articleId;
-  private String articleName;
-  private String introduction;
-  private String articlePic; //文章照片的路径
-  private Date publishDate;
   private String guruId;
-
-  public Article() {
-  }
-
-  @Override
-  public String toString() {
-    return "Article{" +
-            "articleId='" + articleId + '\'' +
-            ", articleName='" + articleName + '\'' +
-            ", introduction='" + introduction + '\'' +
-            ", articlePic='" + articlePic + '\'' +
-            ", publishDate=" + publishDate +
-            ", guruId='" + guruId + '\'' +
-            '}';
-  }
+  private String introduction;
+  @JSONField(format="yyyy-MM-dd hh:mm:ss")
+  private Date date;
+  private String mainPic;
+  private String articleTitle;
+  private String articleStatus;
 
   public String getArticleId() {
     return articleId;
@@ -37,12 +25,12 @@ public class Article implements Serializable {
     this.articleId = articleId;
   }
 
-  public String getArticleName() {
-    return articleName;
+  public String getGuruId() {
+    return guruId;
   }
 
-  public void setArticleName(String articleName) {
-    this.articleName = articleName;
+  public void setGuruId(String guruId) {
+    this.guruId = guruId;
   }
 
   public String getIntroduction() {
@@ -53,27 +41,61 @@ public class Article implements Serializable {
     this.introduction = introduction;
   }
 
-  public String getArticlePic() {
-    return articlePic;
+  public Date getDate() {
+    return date;
   }
 
-  public void setArticlePic(String articlePic) {
-    this.articlePic = articlePic;
+  public void setDate(Date date) {
+    this.date = date;
   }
 
-  public Date getPublishDate() {
-    return publishDate;
+  public String getMainPic() {
+    return mainPic;
   }
 
-  public void setPublishDate(Date publishDate) {
-    this.publishDate = publishDate;
+  public void setMainPic(String mainPic) {
+    this.mainPic = mainPic;
   }
 
-  public String getGuruId() {
-    return guruId;
+  public String getArticleTitle() {
+    return articleTitle;
   }
 
-  public void setGuruId(String guruId) {
+  public void setArticleTitle(String articleTitle) {
+    this.articleTitle = articleTitle;
+  }
+
+  public String getArticleStatus() {
+    return articleStatus;
+  }
+
+  public void setArticleStatus(String articleStatus) {
+    this.articleStatus = articleStatus;
+  }
+
+  public Article() {
+  }
+
+  public Article(String articleId, String guruId, String introduction, Date date, String mainPic, String articleTitle, String articleStatus) {
+    this.articleId = articleId;
     this.guruId = guruId;
+    this.introduction = introduction;
+    this.date = date;
+    this.mainPic = mainPic;
+    this.articleTitle = articleTitle;
+    this.articleStatus = articleStatus;
+  }
+
+  @Override
+  public String toString() {
+    return "Article{" +
+            "articleId='" + articleId + '\'' +
+            ", guruId='" + guruId + '\'' +
+            ", introduction='" + introduction + '\'' +
+            ", date=" + date +
+            ", mainPic='" + mainPic + '\'' +
+            ", articleTitle='" + articleTitle + '\'' +
+            ", articleStatus='" + articleStatus + '\'' +
+            '}';
   }
 }

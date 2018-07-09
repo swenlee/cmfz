@@ -120,7 +120,7 @@ public class GuruController {
         return map;
     }
     @RequestMapping("/export")
-    public String exportExcel(ModelMap map){
+    public String exportExcel(ModelMap map,HttpSession session){
         System.out.println("========================");
         //查询要导出的数据
         List<Guru> gurus = gs.queryAll();
@@ -166,5 +166,11 @@ public class GuruController {
         gs.batchAdd(gurus);
         message = "successful";
         return message;
+    }
+
+    @RequestMapping("gurus")
+    public @ResponseBody List<Guru> seleAll(){
+        List<Guru> gurus = gs.queryAll();
+        return gurus;
     }
 }
